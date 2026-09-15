@@ -1,0 +1,95 @@
+@import "tailwindcss";
+
+@theme {
+  --font-display: "Fraunces", Georgia, serif;
+  --font-sans: "Archivo", "Segoe UI", system-ui, sans-serif;
+  --color-cream: #faf6ef;
+  --color-cream-dark: #f3ecdf;
+  --color-forest: #0f2e1f;
+  --color-forest-deep: #0a2117;
+  --color-leaf: #166534;
+  --color-leaf-light: #dcfce7;
+  --color-saffron: #d97706;
+  --color-saffron-light: #fef3c7;
+  --color-chili: #dc2626;
+  --color-ink: #1c2b23;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-sans);
+  background: var(--color-cream);
+  color: var(--color-ink);
+}
+
+.font-display {
+  font-family: var(--font-display);
+}
+
+/* custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: #d4c9b8;
+  border-radius: 99px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #b8a888;
+}
+
+/* shimmer for skeletons */
+@keyframes shimmer {
+  0% { background-position: -400px 0; }
+  100% { background-position: 400px 0; }
+}
+.skeleton {
+  background: linear-gradient(90deg, #ece4d5 25%, #f7f1e6 50%, #ece4d5 75%);
+  background-size: 800px 100%;
+  animation: shimmer 1.4s infinite linear;
+  border-radius: 0.5rem;
+}
+
+/* fade/slide in for cards */
+@keyframes riseIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.rise-in {
+  animation: riseIn 0.45s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+@keyframes pulseDot {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.5; transform: scale(1.4); }
+}
+.pulse-dot {
+  animation: pulseDot 1.6s ease-in-out infinite;
+}
+
+/* ticket edge for kitchen cards */
+.ticket {
+  background-image: radial-gradient(circle at 0 100%, transparent 6px, #fff 6px);
+}
+
+input[type="number"]::-webkit-outer-spin-button,
+input[type="number"]::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+input[type="number"] {
+  -moz-appearance: textfield;
+  appearance: textfield;
+}
+
+@media print {
+  .no-print { display: none !important; }
+  body { background: white; }
+}
