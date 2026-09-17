@@ -18,7 +18,7 @@ function rnd() { seed = (seed * 1103515245 + 12345) % 2147483648; return seed / 
 const pick = <T,>(arr: readonly T[]) => arr[Math.floor(rnd() * arr.length)];
 const between = (a: number, b: number) => a + Math.floor(rnd() * (b - a + 1));
 
-async function main() {
+export async function runSeed() {
   console.log("Seeding…");
 
   /* wipe */
@@ -459,6 +459,4 @@ async function main() {
   console.log(`Seeded: ${itemRows.length} menu items, ${ingRows.length} ingredients, ${custRows.length} customers, ${orderIds.length} orders, ${loyaltyRows.length + redeemRows.length} loyalty rows.`);
 }
 
-main()
-  .then(async () => { await pool.end(); process.exit(0); })
-  .catch(async (e) => { console.error(e); await pool.end(); process.exit(1); });
+
